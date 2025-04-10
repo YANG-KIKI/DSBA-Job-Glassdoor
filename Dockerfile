@@ -5,6 +5,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+WORKDIR /app
+RUN mkdir -p /app/.streamlit
+COPY .streamlit/secrets.toml /app/.streamlit/
 COPY . .
 
 CMD ["streamlit", "run", "streamlit.py", "--server.port=8501", "--server.enableCORS=false"]
