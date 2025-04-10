@@ -65,28 +65,30 @@ if email:
     if valid:
         st.subheader("View Submitted Experiments")
         submissions = get_all_submissions()
-
+    
         if submissions:
             all_entries = []
+    
+            # Sort the submissions by date
             submissions = sorted(
                 submissions,
                 key=lambda x: parser.parse(x["submitted_at"]) if "submitted_at" in x else datetime.min
             )
-
-        for entry in submissions:
-            all_entries.append({
-                "Experiment": entry.get("experiment_name", "N/A"),
-                "Type": entry.get("experiment_type", "N/A"),
-                "Data Source": entry.get("data_source", "N/A"),
-                "Parameters": entry.get("parameters", "N/A"),
-                "Results": entry.get("results", "N/A"),
-                "Status": entry.get("status", "N/A"),
-                "Notes": entry.get("notes", "N/A"),
-                "Submitted": entry.get("submitted_at", "N/A"),
-            })
-
-
+    
+            for entry in submissions:
+                all_entries.append({
+                    "Experiment": entry.get("experiment_name", "N/A"),
+                    "Type": entry.get("experiment_type", "N/A"),
+                    "Data Source": entry.get("data_source", "N/A"),
+                    "Parameters": entry.get("parameters", "N/A"),
+                    "Results": entry.get("results", "N/A"),
+                    "Status": entry.get("status", "N/A"),
+                    "Notes": entry.get("notes", "N/A"),
+                    "Submitted": entry.get("submitted_at", "N/A"),
+                })
+    
             df = pd.DataFrame(all_entries)
             st.dataframe(df, use_container_width=True)
+    
         else:
             st.info("No submissions yet.")
