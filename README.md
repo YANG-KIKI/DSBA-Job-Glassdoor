@@ -1,67 +1,67 @@
-# 🔬 ML Experiment Sharing Platform
+# ML Experiment Sharing Platform
 
 A lightweight MLOps tool designed for collecting, uploading, and visualizing ML experiments.
 It integrates a **Streamlit** web app with **Firebase** for storage, and provides **CLI tools** for scripting and automation. This project also includes a Dockerized setup for reproducibility.
 
 ---
 
-## 🚀 Project Purpose
+##  Project Purpose
 
 This platform streamlines logging and sharing of ML experiments by combining:
 
-- 📅 A Streamlit web interface for uploading and browsing experiments
-- 💾 A Firebase backend (Realtime DB) for storing experiment logs
-- 💪 CLI tools to support automation and local development workflows
+- A Streamlit web interface for uploading and browsing experiments
+- A Firebase backend (Realtime DB) for storing experiment logs
+- CLI tools to support automation and local development workflows
 
 It supports MLOps principles like **traceability**, **reproducibility**, and **team collaboration**.
 
 ---
 
-## 🛠️ Features
+## Features
 
-- ✅ Upload experiment JSONs via Web UI or CLI
-- 📊 Real-time dashboard with Streamlit
-- 🔍 Query and filter by user (via CLI)
-- 📅 Export logs to CSV (via CLI)
-- 🪓 Docker support for local reproducibility
-- ⚖️ Access control: view-only after submission
+- Upload experiment JSONs via Web UI or CLI
+- Real-time dashboard with Streamlit
+- Query and filter by user (via CLI)
+- Export logs to CSV (via CLI)
+- Docker support for local reproducibility
+- Access control: view-only after submission
 
 ---
 
-## 🤝 Team & Contributions
+## Team & Contributions
 
 | Name                   | Role & Contribution                                                   |
 |------------------------|------------------------------------------------------------------------|
-| Piangpim CHANCHARUNEE | 🔹 Team Lead, Infra Designer, CLI author, Streamlit UI, Firebase setup |
-| Kaushnav ROY          | 🔍 Backend Research, Firebase Firestore Strategy                        |
-| Hanqi YANG            | 🚀 Streamlit App Deployment (Streamlit Cloud)                           |
-| Ming GAO              | 📉 Dockerfile Author, Containerization                                  |
-| I-Hsun LU             | 📋 Project Manager, README + spec.md author                             |
+| Piangpim CHANCHARUNEE | Team Lead, Infra Designer, CLI author, Streamlit UI, Firebase setup |
+| Kaushnav ROY          | Backend Research, Firebase Firestore Strategy                        |
+| Hanqi YANG            | Streamlit App Deployment (Streamlit Cloud)                           |
+| Ming GAO              | Dockerfile Author, Containerization                                  |
+| I-Hsun LU             | Project Manager, README + spec.md author                             |
 
 ---
 
-## 🔧 CLI Tools
+## CLI Tools
 
 Located in the `/cli/` folder. Run with `python` from the root directory.
 
-### ✉ Submit an Experiment
+### Submit an Experiment
 ```bash
 python cli/upload_experiment.py   --email "kiki@example.com"   --name "Transformer Run"   --params "{"lr": 0.001}"   --results "{"acc": 0.92}"   --type "NLP"   --data "WikiText"   --status "Success"   --notes "First baseline"
 ```
 
-### 📅 Download All Experiments
+### Download All Experiments
 ```bash
 python cli/download_experiment.py --output all_experiments.csv
 ```
 
-### 💼 Filter by User
+### Filter by User
 ```bash
 python cli/get_submissions_from_user.py --email kiki@example.com --output user.csv
 ```
 
 ---
 
-## 📂 Firebase Setup
+## Firebase Setup
 
 > Required for both CLI and Streamlit.
 
@@ -80,7 +80,7 @@ Do NOT commit this file to GitHub.
 
 ---
 
-## 🚧 Run Locally (with Docker)
+## Run Locally (with Docker)
 
 ### 1. Clone & Build
 ```bash
@@ -102,18 +102,18 @@ streamlit run streamlit.py
 
 ---
 
-## 🔗 Deployed App
+## Deployed App
 
 Try it here: [Hosted App on Streamlit Cloud](https://ml-experiment-sharing-mlops.streamlit.app/)
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 Thanks to the MLOps course by Joachim Zentici at CentraleSupélec / ESSEC.
 
 ---
 
-## 📚 License
+## License
 
 MIT License. Feel free to fork, clone, and adapt!
