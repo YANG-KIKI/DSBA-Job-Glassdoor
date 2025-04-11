@@ -1,106 +1,119 @@
 # 🔬 ML Experiment Sharing Platform
 
-A lightweight MLOps tool designed for collecting, uploading, and visualizing ML experiments.  
-It integrates a Streamlit-based web app with Firebase for storage, and provides CLI tools for automation and scripting.
+A lightweight MLOps tool designed for collecting, uploading, and visualizing ML experiments.
+It integrates a **Streamlit** web app with **Firebase** for storage, and provides **CLI tools** for scripting and automation. This project also includes a Dockerized setup for reproducibility.
 
 ---
 
 ## 🚀 Project Purpose
 
-This project aims to streamline the logging and sharing of machine learning experiments by combining:
-- A **Streamlit web interface** for easy upload and browsing,
-- A **Firebase backend** (Realtime + Firestore) for data storage,
-- Lightweight **CLI tools** to support scripting and automation in real ML workflows.
+This platform streamlines logging and sharing of ML experiments by combining:
 
-This project embodies **MLOps principles** by supporting reproducibility, traceability, and automation in ML experiment tracking.
+- 📅 A Streamlit web interface for uploading and browsing experiments
+- 💾 A Firebase backend (Realtime DB) for storing experiment logs
+- 💪 CLI tools to support automation and local development workflows
+
+It supports MLOps principles like **traceability**, **reproducibility**, and **team collaboration**.
 
 ---
 
 ## 🛠️ Features
 
-- ✅ Upload experiment JSON files via web or CLI
-- 📊 Browse experiments with real-time updates
-- 🔍 Filter by user (CLI)
-- 📥 Export results to CSV
-- 🧱 Docker support for reproducibility
-- 🧪 End-to-end: Streamlit ➝ Firebase ➝ Export
+- ✅ Upload experiment JSONs via Web UI or CLI
+- 📊 Real-time dashboard with Streamlit
+- 🔍 Query and filter by user (via CLI)
+- 📅 Export logs to CSV (via CLI)
+- 🪓 Docker support for local reproducibility
+- ⚖️ Access control: view-only after submission
 
 ---
 
-## 👥 Roles & Responsibilities
+## 🤝 Team & Contributions
 
-| Name                  | Role & Contribution |
-|-----------------------|---------------------|
-| **Piangpim CHANCHARUNEE** | 🔹 Team Lead & UI/Infra Designer<br>Designed project architecture, Streamlit UI, and Firebase Realtime DB setup |
-| **Kaushnav ROY** | 🔍 Long-term Backend Strategy<br>Researched and explored Firebase Firestore structure for future scalability |
-| **Hanqi YANG** | 🚀 Deployment Specialist<br>Responsible for deploying and testing the Streamlit app |
-| **Ming GAO** | 🐳 Containerization Expert<br>Wrote and configured the Dockerfile for portable setup |
-| **I-Hsun LU** | 📋 Project Manager & Spec Author<br>Coordinated development, wrote `spec.md` and `README.md`, maintained GitHub workflow |
+| Name                   | Role & Contribution                                                   |
+|------------------------|------------------------------------------------------------------------|
+| Piangpim CHANCHARUNEE | 🔹 Team Lead, Infra Designer, CLI author, Streamlit UI, Firebase setup |
+| Kaushnav ROY          | 🔍 Backend Research, Firebase Firestore Strategy                        |
+| Hanqi YANG            | 🚀 Streamlit App Deployment (Streamlit Cloud)                           |
+| Ming GAO              | 📉 Dockerfile Author, Containerization                                  |
+| I-Hsun LU             | 📋 Project Manager, README + spec.md author                             |
 
 ---
 
-## ⚙️ Quickstart: Run the App
+## 🔧 CLI Tools
 
-### 1. Clone the repository
+Located in the `/cli/` folder. Run with `python` from the root directory.
+
+### ✉ Submit an Experiment
 ```bash
-git clone https://github.com/your-org/ml-experiment-sharing.git
-cd ml-experiment-sharing
+python cli/upload_experiment.py   --email "kiki@example.com"   --name "Transformer Run"   --params "{"lr": 0.001}"   --results "{"acc": 0.92}"   --type "NLP"   --data "WikiText"   --status "Success"   --notes "First baseline"
+```
 
-### 2. Install dependencies
-
-Make sure you have Python 3.8+ installed.
-
-Install the required Python packages:
-
+### 📅 Download All Experiments
 ```bash
-pip install -r requirements.txt
+python cli/download_experiment.py --output all_experiments.csv
+```
+
+### 💼 Filter by User
+```bash
+python cli/get_submissions_from_user.py --email kiki@example.com --output user.csv
 ```
 
 ---
 
-### 3. Set up Firebase
+## 📂 Firebase Setup
 
-To use Firebase as a backend, you’ll need a Firebase project with Firestore or Realtime Database enabled.
+> Required for both CLI and Streamlit.
 
-1. Go to [Firebase Console](https://console.firebase.google.com/), create a new project.
-2. Navigate to **Project Settings > Service Accounts**.
-3. Click **Generate new private key** to download the `firebaseKey.json`.
-4. Place this file in the root directory of the project.
+1. Go to [Firebase Console](https://console.firebase.google.com/), create a project.
+2. Enable Realtime Database.
+3. Navigate to **Project Settings > Service Accounts**.
+4. Generate a new private key: save it as `firebaseKey.json`.
+5. Place the key at project root or inside `.streamlit/secrets.toml`.
 
-> **Important:** Do not upload `firebaseKey.json` to GitHub. It should remain private.
+```toml
+# Example .streamlit/secrets.toml
+firebase_key = "your_key_path.json"
+```
+
+Do NOT commit this file to GitHub.
 
 ---
 
-### 4. Run the Streamlit app locally
+## 🚧 Run Locally (with Docker)
 
+### 1. Clone & Build
 ```bash
+git clone https://github.com/YANG-KIKI/MLOPS-ml-experiment-sharing.git
+cd MLOPS-ml-experiment-sharing
+docker build -t mlops-dashboard .
+```
+
+### 2. Run Container
+```bash
+docker run -p 8501:8501 -v $PWD/.streamlit:/app/.streamlit mlops-dashboard
+```
+
+Or without Docker:
+```bash
+pip install -r requirements.txt
 streamlit run streamlit.py
 ```
 
-The app will be available at: [http://localhost:8501](http://localhost:8501)
+---
+
+## 🔗 Deployed App
+
+Try it here: [Hosted App on Streamlit Cloud](https://ml-experiment-sharing-mlops.streamlit.app/)
 
 ---
 
-### ✅ Try the hosted demo
+## 🙏 Acknowledgements
 
-You can also explore the deployed version of our app here:  
-👉 [https://ml-experiment-sharing-mlops.streamlit.app/](https://ml-experiment-sharing-mlops.streamlit.app/)
+Thanks to the MLOps course by Joachim Zentici at CentraleSupélec / ESSEC.
 
 ---
 
-## 👥 Contributors
+## 📚 License
 
-Thanks to all the amazing contributors who made this project possible:
-
-## 👥 Contributors
-
-Thanks to all the amazing contributors who made this project possible:
-
-- [@piangpimc](https://github.com/piangpimc) — Project Lead, Streamlit Designer, Firebase Realtime Setup  
-- [@kaushnavGit](https://github.com/KaushnavGit) — Firebase Firestore Research & Long-Term Scalability  
-- [@YANG-KIKI](https://github.com/YANG-KIKI) — Streamlit Deployment & Integration  
-- [@GEMGM](https://github.com/GEMGM) — Dockerfile Author & Containerization  
-- [@isha-lu](https://github.com/isha-lu) — Project Manager, Spec & README Author, GitHub Coordinator  
-
-
-
+MIT License. Feel free to fork, clone, and adapt!
