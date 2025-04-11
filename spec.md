@@ -1,11 +1,11 @@
 # ML Experiment Sharing Platform — Design Spec (spec.md)
 
-## 🗓 Project Summary
+## Project Summary
 This tool implements a lightweight, community-driven dashboard for sharing ML experiments. It combines a simple Streamlit web interface with Firebase Realtime DB and Python CLI scripts to support reproducibility, traceability, and MLOps best practices.
 
 ---
 
-## ⚖️ Core Design Principles
+## Core Design Principles
 - Minimal barrier for contributors (no login; submission = access)
 - Firebase used for scalability and cloud simplicity
 - Streamlit used for rapid prototyping and visualization
@@ -14,7 +14,7 @@ This tool implements a lightweight, community-driven dashboard for sharing ML ex
 
 ---
 
-## 🛠️ Components & Architecture
+## Components & Architecture
 
 ```mermaid
 graph TD;
@@ -27,7 +27,7 @@ graph TD;
 
 ---
 
-## 🎯 Functionalities Implemented
+## Functionalities Implemented
 
 | Feature | Method | Description |
 |--------|--------|-------------|
@@ -40,7 +40,7 @@ graph TD;
 
 ---
 
-## 🤔 Design Decisions
+## Design Decisions
 
 - Firebase chosen for ease of integration and cost (free tier)
 - Streamlit is ideal for quick dashboard deployment (esp. via Streamlit Cloud)
@@ -50,7 +50,7 @@ graph TD;
 
 ---
 
-## 🔧 Manual Setup Instructions
+## Manual Setup Instructions
 
 ### 1. Firebase
 - Enable Realtime Database
@@ -75,7 +75,7 @@ docker run -p 8501:8501 mlops-dashboard
 
 ---
 
-## 📁 Appendix: File Structure
+## Appendix: File Structure
 
 ```
 MLOps-ml-experiment-sharing/
@@ -93,7 +93,7 @@ MLOps-ml-experiment-sharing/
 
 ---
 
-## 🚀 Possible Improvements
+## Possible Improvements
 - Add login via Google OAuth (Firebase Auth)
 - Add visual plots of parameter/result correlation
 - Add user tags or project tags to logs
